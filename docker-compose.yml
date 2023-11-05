@@ -20,11 +20,11 @@ x-db-defaults: &db-defaults
     - POSTGRES_USER=listmonk
     - POSTGRES_DB=listmonk
   restart: unless-stopped
-  healthcheck:
-    test: ["CMD-SHELL", "pg_isready -U listmonk"]
-    interval: 10s
-    timeout: 5s
-    retries: 6
+  # healthcheck:
+  #   test: ["CMD-SHELL", "pg_isready -U listmonk"]
+  #   interval: 10s
+  #   timeout: 5s
+  #   retries: 6
 
 services:
   db:

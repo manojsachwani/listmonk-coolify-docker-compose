@@ -37,6 +37,7 @@ services:
     container_name: listmonk_db
     volumes:
       - type: volume
+        source: listmonk-data
         target: /var/lib/postgresql/data
 
   app:
@@ -50,4 +51,4 @@ networks:
   listmonk:
 
 volumes:
-  listmonk-data:
+  cloljcy0x004po19r7mf0go12listmonk-data:

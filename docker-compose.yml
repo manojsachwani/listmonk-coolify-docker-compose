@@ -20,10 +20,6 @@ x-db-defaults: &db-defaults
     - "9432:5432"
   networks:
     - listmonk
-  environment:
-    - POSTGRES_PASSWORD=listmonk
-    - POSTGRES_USER=listmonk
-    - POSTGRES_DB=listmonk
   restart: unless-stopped
   healthcheck:
     test: ["CMD-SHELL", "pg_isready -U listmonk"]
@@ -37,7 +33,7 @@ services:
     container_name: listmonk_db
     volumes:
       - type: volume
-        source: listmonk-data
+        source: ~/listmonk-data
         target: /var/lib/postgresql/data
 
   app:
@@ -46,9 +42,9 @@ services:
     depends_on:
       - db
     volumes:
-      - ~/config.toml:/listmonk/config.toml 
+      - ~/config.toml:/listmonk/config.toml
 networks:
   listmonk:
 
 volumes:
-  cloljcy0x004po19r7mf0go12listmonk-data:
+  listmonk-data:

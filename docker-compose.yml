@@ -27,9 +27,9 @@ x-db-defaults: &db-defaults
     retries: 6
 
 services:
-  listmonkdbservice:
+  db:
     <<: *db-defaults
-    #container_name: listmonk_db
+    container_name: listmonk_db
     volumes:
       - type: volume
         source: listmonk-data
@@ -37,11 +37,11 @@ services:
 
   app:
     <<: *app-defaults
-    #container_name: listmonk_app
+    container_name: listmonk_app
     depends_on:
-      - listmonkdbservice
+      - db
     volumes:
-      - config.toml:/listmonk/config.toml
+      - ~/config.toml:/listmonk/config.toml
 networks:
   listmonk:
 

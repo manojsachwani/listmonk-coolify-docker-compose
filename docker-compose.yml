@@ -29,7 +29,7 @@ x-db-defaults: &db-defaults
 services:
   listmonkdbservice:
     <<: *db-defaults
-    container_name: listmonk_db
+    #container_name: listmonk_db
     volumes:
       - type: volume
         source: listmonk-data
@@ -37,7 +37,7 @@ services:
 
   app:
     <<: *app-defaults
-    container_name: listmonk_app
+    #container_name: listmonk_app
     depends_on:
       - listmonkdbservice
     volumes:

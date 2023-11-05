@@ -39,7 +39,7 @@ services:
   app:
     <<: *app-defaults
     container_name: listmonk_app
-    command: [sh, -c, "yes | ./listmonk --install --config config.toml && ./listmonk --config config-demo.toml"]
+    command: [sh, -c, "yes | ./listmonk --install --config config.toml && ./listmonk --config config.toml"]
     depends_on:
       - db
     volumes:

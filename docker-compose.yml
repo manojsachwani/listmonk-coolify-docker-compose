@@ -37,7 +37,7 @@ services:
     container_name: listmonk_db
     volumes:
       - type: volume
-        source: $$idlistmonk-data
+        source: $$id-listmonk-data
         target: /var/lib/postgresql/data
 
   app:

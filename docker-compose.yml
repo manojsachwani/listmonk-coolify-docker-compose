@@ -36,9 +36,10 @@ services:
     <<: *db-defaults
     container_name: listmonk_db
     volumes:
-      - type: volume
-        source: $$id-listmonk-data
-        target: /var/lib/postgresql/data
+      - listmonk-data:/var/lib/postgresql/data
+      # - type: volume
+      #   source: $$id-listmonk-data
+      #   target: /var/lib/postgresql/data
 
   app:
     <<: *app-defaults
@@ -50,5 +51,5 @@ services:
 networks:
   listmonk:
 
-volumes:
-  listmonk-data:
+# volumes:
+#   listmonk-data:

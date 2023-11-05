@@ -4,7 +4,7 @@ address = "0.0.0.0:9009"
 
 # Database.
 [db]
-host = "db"
+host = "listmonkdbservice"
 port = 5432
 user = "listmonk"
 password = "listmonk"

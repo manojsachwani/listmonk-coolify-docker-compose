@@ -2,6 +2,13 @@
 # Interface and port where the app will run its webserver.
 address = "0.0.0.0:9009"
 
+# BasicAuth authentication for the admin dashboard. This will eventually
+# be replaced with a better multi-user, role-based authentication system.
+# IMPORTANT: Leave both values empty to disable authentication on admin
+# only where an external authentication is already setup.
+admin_username = "wdwmonk"
+admin_password = "BlankRingOfLight9081"
+
 # Database.
 [db]
 host = "db"

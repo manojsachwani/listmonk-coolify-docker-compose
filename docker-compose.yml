@@ -40,11 +40,12 @@ services:
     <<: *app-defaults
     container_name: listmonk_app
     #command: [sh, -c, "yes | ./listmonk --install --config config.toml && ./listmonk --config config.toml"] #only run when installs
-    command: [sh, -c, "./listmonk --config config.toml"]
+    command: [sh, -c, "./listmonk --config config.toml --static-dir=/listmonk/static"]
     depends_on:
       - db
     volumes:
       - ~/config.toml:/listmonk/config.toml
+      - ~/listmonk-static:/listmonk/static
 networks:
   listmonk:
 

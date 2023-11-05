@@ -1,4 +1,9 @@
+# NOTE: This docker-compose.yml is meant to be just an example guideline
+# on how you can achieve the same. It is not intented to run out of the box
+# and you must edit the below configurations to suit your needs.
+
 version: "3.7"
+
 x-app-defaults: &app-defaults
   restart: unless-stopped
   image: listmonk/listmonk:latest
@@ -20,11 +25,11 @@ x-db-defaults: &db-defaults
     - POSTGRES_USER=listmonk
     - POSTGRES_DB=listmonk
   restart: unless-stopped
-  # healthcheck:
-  #   test: ["CMD-SHELL", "pg_isready -U listmonk"]
-  #   interval: 10s
-  #   timeout: 5s
-  #   retries: 6
+  healthcheck:
+    test: ["CMD-SHELL", "pg_isready -U listmonk"]
+    interval: 10s
+    timeout: 5s
+    retries: 6
 
 services:
   db:
@@ -32,7 +37,7 @@ services:
     container_name: listmonk_db
     volumes:
       - type: volume
-        source: /root/listmonk-data
+        source: listmonk-data
         target: /var/lib/postgresql/data
 
   app:
@@ -41,10 +46,9 @@ services:
     depends_on:
       - db
     volumes:
-      - /root/config.toml:/listmonk/config.toml
+      - ~/config.toml:/listmonk/config.toml 
 networks:
   listmonk:
 
 volumes:
   listmonk-data:
-
